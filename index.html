@@ -23,7 +23,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content="WENHUI`S BLOG">
-    <meta name="author" content="John Doe">
+    <meta name="author" content="niuwenhui">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
 
@@ -80,7 +80,7 @@
         		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
             	<ul class="sb-submenu">
 				  	
-				    <li><a href="/categories/工作学习/" class="animsition-link">工作学习<small>(16)</small></a></li>
+				    <li><a href="/categories/工作学习/" class="animsition-link">工作学习<small>(13)</small></a></li>
 				    
 				    <li><a href="/categories/读书/" class="animsition-link">读书<small>(1)</small></a></li>
 				    
@@ -92,9 +92,7 @@
                 <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
                 <ul class="sb-submenu">
                     
-                    <li><a target="_blank" rel="noopener" href="https://niuey2001.github.io" class="animsition-link">Kieran</a></li>
-                    
-                    <li><a target="_blank" rel="noopener" href="http://domain.com/" class="animsition-link">Name</a></li>
+                    <li><a target="_blank" rel="noopener" href="https://niuey2001.github.io" class="animsition-link">xiaoniu</a></li>
                     
                 </ul>
             </li>
@@ -242,7 +240,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
-                    <h3><a href="/2020/05/09/dorado7/">dorado7</a></h3>
+                    <h3><a href="/2020/05/09/dorado7/">Dorado7</a></h3>
                     <span>
                         <span class="post-meta">
       <time datetime="2020-05-09T03:23:17.000Z" itemprop="datePublished">
@@ -277,7 +275,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
-                    <h3><a href="/2019/02/15/truncate恢复/">truncate恢复</a></h3>
+                    <h3><a href="/2019/02/15/truncate恢复/">TRUNCATE恢复</a></h3>
                     <span>
                         <span class="post-meta">
       <time datetime="2019-02-15T03:24:45.000Z" itemprop="datePublished">
@@ -330,7 +328,7 @@
                 <div class="col-md-8">
                     <p>
                       
-                        rman备份后为什么要同时备份归档日志rman备份是一种物理的备份，它直接去读取数据块，因此rman是块级别的备份。从备份的那个时间点开始rman将锁定此刻的数据文件信息，也就是说只是备份数据文件到此刻的信息为之。但是rman并不锁定数据文件的使用，也就是说rman的备份，不是数据库一致性状态的备份，由于rman备份是块级别的，它只备份控制文件中已经存在的数据块，同时数据库还在运行之中，那么就有可能会出现某些已经提交的操作，但是dbwn
+                        
                       
                     </p>
                     
@@ -347,7 +345,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
-                    <h3><a href="/2019/02/15/ORACLE-temp/">ORACLE_temp</a></h3>
+                    <h3><a href="/2019/02/15/ORACLE-temp/">ORACLE临时表空间</a></h3>
                     <span>
                         <span class="post-meta">
       <time datetime="2019-02-15T01:11:41.000Z" itemprop="datePublished">
@@ -383,7 +381,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2 opening-statement">
                 <div class="col-md-4">
-                    <h3><a href="/2019/01/28/java内存介绍/">java内存介绍</a></h3>
+                    <h3><a href="/2019/01/28/java内存介绍/">JVM笔记</a></h3>
                     <span>
                         <span class="post-meta">
       <time datetime="2019-01-28T02:06:05.000Z" itemprop="datePublished">
@@ -408,43 +406,6 @@
                     
                     <p class="pull-right readMore">
                         <a href="/2019/01/28/java内存介绍/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2019/01/28/bitmap/">b*tree索引转为位图索引</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2019-01-28T01:22:56.000Z" itemprop="datePublished">
-          2019-01-28
-      </time>
-    
-    
-    | 
-    <a href='/tags/bitmap/'>bitmap</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        b*tree索引转为位图索引
-在Oracle 9i以上，Oracle有时候会选择将B-Tree索引进行BITMAP转换来进行SQL执行，从而导致极其恶劣的执行计划。
-该转换由隐藏参数_b_tree_bitmap_plans决定。如果该参数为true，则进行转换，否则不进行转换。而8i里，该参数缺省为false，所以只有存在bitmap索引时才会考虑将B树索引转换为bitmap; 而到了9i里，该参数缺省为true了，则对任何索引都有可能
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2019/01/28/bitmap/">Read More...</a>
                     </p>
                     
                 </div>
@@ -482,52 +443,6 @@ FORCE LOGGING强制记录日志，即对数据库中的所有操作都产生日�
                     
                     <p class="pull-right readMore">
                         <a href="/2018/12/28/Oracle-log/">Read More...</a>
-                    </p>
-                    
-                </div>
-                <div class="clearfix"></div>
-                <hr class="nogutter">
-            </div>
-        </div>
-        
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 opening-statement">
-                <div class="col-md-4">
-                    <h3><a href="/2018/11/20/taro-project/">taro-project</a></h3>
-                    <span>
-                        <span class="post-meta">
-      <time datetime="2018-11-20T03:51:18.000Z" itemprop="datePublished">
-          2018-11-20
-      </time>
-    
-    
-    | 
-    <a href='/tags/taro/'>taro</a>
-    
-    
-</span>
-                    </span>
-                </div>
-                <div class="col-md-8">
-                    <p>
-                      
-                        taro框架实战，虚拟货币交易网站一期开发
-项目简介
-基于 Taro，适配 微信小程序、百度小程序、RN、h5、支付宝小程序，开发虚拟货币交易平台实现一期功能
-
-平台框架：实现 PC 端所有页面目录，实现登陆注册功能。
-行情介绍：交易行情展示页面。
-充值提现：实现充值、提现页面。
-帮助系统：实现帮助信息展示、智能回复等。项目地址 ： 完工之后开源github，关注 钮文辉 。
-
-安装
-安装taro,基于taro-ui 开发。
-  123
-                      
-                    </p>
-                    
-                    <p class="pull-right readMore">
-                        <a href="/2018/11/20/taro-project/">Read More...</a>
                     </p>
                     
                 </div>
@@ -583,6 +498,90 @@ ORACLE版本：oracle 11.2.0.4，下载地址：
             </div>
         </div>
         
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2018/09/20/ogg/">ogg 常用命令</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2018-09-20T09:29:26.000Z" itemprop="datePublished">
+          2018-09-20
+      </time>
+    
+    
+    | 
+    <a href='/tags/ogg/'>ogg</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        初始化
+
+ogg软件安装
+
+12345678mkdir /goldengatechown oracle:dba /goldengatecd /goldengatetar xvf ggs.tarcd /home/oracleln -s /goldengate ggsvi .bash_profileexport LD_LIBRARY_PATH=$ORACLE_HOME/lib:/usr/lib
+
+初始化目录
+
+1234567891011cr
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2018/09/20/ogg/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 opening-statement">
+                <div class="col-md-4">
+                    <h3><a href="/2018/09/07/Cookie实现SSO/">Cookie实现SSO</a></h3>
+                    <span>
+                        <span class="post-meta">
+      <time datetime="2018-09-07T09:50:35.000Z" itemprop="datePublished">
+          2018-09-07
+      </time>
+    
+    
+    | 
+    <a href='/tags/sso/'>sso</a>
+    
+    
+</span>
+                    </span>
+                </div>
+                <div class="col-md-8">
+                    <p>
+                      
+                        介绍
+两个拥有相同顶级域名的网站:a:  www.lb.world （主网站）b: game.lb.world   (需要共享登陆信息网站)需要实现：登陆a网站，跳转b网站的时候，免登陆。同时保留b网站原有的登陆入口。大致思路：
+
+1，设置加密字段，存储用户主键、签名信息。2，修改a网站登陆逻辑，增加登陆成功，回写加密字段到cookie。3，修改b网站登陆逻辑，增加获取cookie自动登陆功能。
+
+实现
+设置加密字段加密字段主要有3部分
+                      
+                    </p>
+                    
+                    <p class="pull-right readMore">
+                        <a href="/2018/09/07/Cookie实现SSO/">Read More...</a>
+                    </p>
+                    
+                </div>
+                <div class="clearfix"></div>
+                <hr class="nogutter">
+            </div>
+        </div>
+        
         <nav class="pagination" role="pagination">
           
           <a class="pull-right" href="/page/2/">Older Posts →</a>
@@ -605,9 +604,9 @@ ORACLE版本：oracle 11.2.0.4，下载地址：
     <div class="container">
             <div class="copy">
                 <p>
-                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By John Doe. All Rights Reserved.
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By niuwenhui. All Rights Reserved.
                 </p>
-                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+                <p>Theme By  Kieran </p>
             </div>
             <div class="social">
                 <ul>

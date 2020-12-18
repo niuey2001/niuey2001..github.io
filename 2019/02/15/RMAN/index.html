@@ -23,7 +23,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content="WENHUI`S BLOG">
-    <meta name="author" content="John Doe">
+    <meta name="author" content="niuwenhui">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
 
@@ -80,7 +80,7 @@
         		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
             	<ul class="sb-submenu">
 				  	
-				    <li><a href="/categories/工作学习/" class="animsition-link">工作学习<small>(16)</small></a></li>
+				    <li><a href="/categories/工作学习/" class="animsition-link">工作学习<small>(13)</small></a></li>
 				    
 				    <li><a href="/categories/读书/" class="animsition-link">读书<small>(1)</small></a></li>
 				    
@@ -92,9 +92,7 @@
                 <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
                 <ul class="sb-submenu">
                     
-                    <li><a target="_blank" rel="noopener" href="https://niuey2001.github.io" class="animsition-link">Kieran</a></li>
-                    
-                    <li><a target="_blank" rel="noopener" href="http://domain.com/" class="animsition-link">Name</a></li>
+                    <li><a target="_blank" rel="noopener" href="https://niuey2001.github.io" class="animsition-link">xiaoniu</a></li>
                     
                 </ul>
             </li>
@@ -185,20 +183,19 @@
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h4 id="rman备份后为什么要同时备份归档日志"><a href="#rman备份后为什么要同时备份归档日志" class="headerlink" title="rman备份后为什么要同时备份归档日志"></a>rman备份后为什么要同时备份归档日志</h4><p>rman备份是一种物理的备份，它直接去读取数据块，因此rman是块级别的备份。从备份的那个时间点开始rman将锁定此刻的数据文件信息，也就是说只是备份数据文件到此刻的信息为之。<br>但是rman并不锁定数据文件的使用，也就是说rman的备份，不是数据库一致性状态的备份，由于rman备份是块级别的，它只备份控制文件中已经存在的数据块，同时数据库还在运行之中，那么就有可能会出现某些已经提交的操作，但是dbwn还没有写入数据文件，或者已经被rman备份过的数据块，又重新被修改，等等，这些信息rman备份都不会记录，也是rman无法记录的。但是记录这些信息的是redo file，所以在rman完毕建议马上执行日志切换，然后备份归档日志，因为在rman恢复过程中，rman本身备份的数据是不一直的，要靠这些已经归档的redo file信息恢复和保持数据库的一直状态。<br>归档文件中真正有用的是从rman备份开始到rman备份结束时刻系统产生的归档日志。同时rman在恢复的时候，restore database完毕后，会依次利用归档日志和联机日志进行完全恢复。此时利用的这些归档就是从rman备份开始到rman备份结束产生的归档日志。因此备份归档日志是很必要的，当然联机日志也是必须的，这些日志保证了rman能够完全的恢复数据库。</p>
-
+      		
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
     
     <a class="pull-left" href="/2019/02/15/truncate%E6%81%A2%E5%A4%8D/" style="float: left;">
-        ← truncate恢复
+        ← TRUNCATE恢复
     </a>
     
     
     <a class="pull-right" href="/2019/02/15/ORACLE-temp/">
-        ORACLE_temp →
+        ORACLE临时表空间 →
     </a>
     
 </nav>
@@ -264,9 +261,9 @@
     <div class="container">
             <div class="copy">
                 <p>
-                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By John Doe. All Rights Reserved.
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By niuwenhui. All Rights Reserved.
                 </p>
-                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+                <p>Theme By  Kieran </p>
             </div>
             <div class="social">
                 <ul>
