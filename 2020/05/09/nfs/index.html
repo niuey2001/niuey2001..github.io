@@ -80,7 +80,7 @@
         		<a class="sb-toggle-submenu">Categories<span class="sb-caret"></span></a>
             	<ul class="sb-submenu">
 				  	
-				    <li><a href="/categories/工作学习/" class="animsition-link">工作学习<small>(13)</small></a></li>
+				    <li><a href="/categories/工作学习/" class="animsition-link">工作学习<small>(14)</small></a></li>
 				    
 				    <li><a href="/categories/读书/" class="animsition-link">读书<small>(1)</small></a></li>
 				    
@@ -187,15 +187,19 @@
 <ul>
 <li>服务端：</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep nfs</span><br><span class="line">rpm -qa | grep rpcbind</span><br><span class="line">yum -y install nfs-utils rpcbind</span><br><span class="line">mkdir -p /weblogic/ftp</span><br><span class="line">chmod 666 /weblogic/ftp</span><br><span class="line">vim /etc/exports </span><br><span class="line">/weblogic/ftp 134.12.64.0/24(rw,root_squash,sync,insecure)</span><br><span class="line"><span class="comment">##属性注解</span></span><br><span class="line">rw、ro : 可擦写 (read-write) 或只读 (read-only)</span><br><span class="line">sync、async ：sync 同步，async:异步</span><br><span class="line">no_root_squash、root_squash ： root_squash：压缩 root用户为 nfsnobody （保守），否则不处理</span><br><span class="line">all_squash ：压缩所有用户为nfsnobody</span><br><span class="line">nsecure : 允许客户端从大于1024的tcp/ip端口连接服务器</span><br><span class="line"><span class="comment">##配置生效</span></span><br><span class="line">exportfs –r</span><br><span class="line">service rpcbind start</span><br><span class="line">service nfs start</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep nfs</span><br><span class="line">rpm -qa | grep rpcbind</span><br><span class="line">yum -y install nfs-utils rpcbind</span><br><span class="line">mkdir -p /weblogic/ftp</span><br><span class="line">chmod 666 /weblogic/ftp</span><br><span class="line">vim /etc/exports </span><br><span class="line">/weblogic/ftp xxx.xxx.xxx.0/24(rw,root_squash,sync,insecure)</span><br><span class="line"><span class="comment">##属性注解</span></span><br><span class="line">rw、ro : 可擦写 (read-write) 或只读 (read-only)</span><br><span class="line">sync、async ：sync 同步，async:异步</span><br><span class="line">no_root_squash、root_squash ： root_squash：压缩 root用户为 nfsnobody （保守），否则不处理</span><br><span class="line">all_squash ：压缩所有用户为nfsnobody</span><br><span class="line">nsecure : 允许客户端从大于1024的tcp/ip端口连接服务器</span><br><span class="line"><span class="comment">##配置生效</span></span><br><span class="line">exportfs –r</span><br><span class="line">service rpcbind start</span><br><span class="line">service nfs start</span><br></pre></td></tr></table></figure>
 <ul>
 <li>客户端：</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yum -y install nfs-utils</span><br><span class="line">mkdir –p /weblogic/ftp</span><br><span class="line">Showmount –e 134.12.64.29 </span><br><span class="line">Mount –t nfs 134.12.64.29:/weblogic/ftp  /weblogic/ftp</span><br><span class="line">umount /weblogic/ftp</span><br><span class="line">fuser –m /weblogic/ftp</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yum -y install nfs-utils</span><br><span class="line">mkdir –p /weblogic/ftp</span><br><span class="line">Showmount –e xxx.xxx.xxx.xxx </span><br><span class="line">Mount –t nfs xxx.xxx.xxx.xxx:/weblogic/ftp  /weblogic/ftp</span><br><span class="line">umount /weblogic/ftp</span><br><span class="line">fuser –m /weblogic/ftp</span><br></pre></td></tr></table></figure>
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2020/12/21/WPF/" style="float: left;">
+        ← WPF 项目实践
+    </a>
     
     
     <a class="pull-right" href="/2020/05/09/dorado7/">
