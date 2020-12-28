@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Archives: 2018/8 | WENHUI`S BLOG</title>
+  <title>Jdk1.8+Redis+Mysql安装 | WENHUI`S BLOG</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -59,7 +59,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -163,69 +163,112 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 
-      <!-- ============================ Hero Image =========================== -->
-
-<section id="hero" class="scrollme">
-    <div class="container-fluid element-img" style="background: url(https://cdn.jsdelivr.net/gh/niuey2001/rs@5.0/img/1.jpeg) no-repeat center center fixed;background-size: cover">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
-                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
-                    <div>
-                        
-                        <h2></h2>
-                        <p></p>
-                        
-                        <h2></h2>
-                        <p></p>
-                        
-
-                    </div>
-                </div>
-            </div>
-            <!-- // .col-md-12 -->
-        </div>
-        <div class="herofade beige-dk"></div>
-    </div>
-</section>
-
-<!-- Height spacing helper -->
-<div class="heightblock"></div>
-<!-- // End height spacing helper -->
-
-<!-- ============================ END Hero Image =========================== -->
-
-
-
-
-<section id="services">
+      
+<section id="intro">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row boxes">
-                    
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2018/08/27/vue/">vue</a></h4>
-                            
-                            <p><time datetime="2018-08-27T08:04:00.000Z"><a href="/2018/08/27/vue/">2018-08-27</a></time></p>
-                        </div>
-                    
-                </div>
-            </div>    
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2019-12-28T01:04:46.000Z" itemprop="datePublished">
+          2019-12-28
+      </time>
+    
+    
+    | 
+    <a href='/tags/jdk/'>jdk</a>,
+    
+    <a href='/tags/redis/'>redis</a>,
+    
+    <a href='/tags/mysql/'>mysql</a>
+    
+    
+</span>
+                <h1>Jdk1.8+Redis+Mysql安装</h1>
+            </div>
         </div>
-    </div>
-</section> 
+        <div class="col-md-8 col-md-offset-2">
+      		<h4 id="linux-下jdk-redis-mysql安装笔记"><a href="#linux-下jdk-redis-mysql安装笔记" class="headerlink" title="linux 下jdk+redis+mysql安装笔记"></a>linux 下jdk+redis+mysql安装笔记</h4><blockquote>
+<p>redis 安装</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">wget http://download.redis.io/releases/redis-4.0.9.tar.gz</span><br><span class="line">tar -zxf redis-4.0.9.tar.gz</span><br><span class="line">mv redis-4.0.9 /usr/<span class="built_in">local</span>/redis</span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/redis</span><br><span class="line">make</span><br><span class="line"><span class="built_in">cd</span> src</span><br><span class="line">make install</span><br><span class="line"> mv redis.conf /usr/<span class="built_in">local</span>/redis/etc/</span><br><span class="line">mv mkreleasehdr.sh redis-benchmark redis-check-aof redis-check-rdb redis-cli redis-server /usr/<span class="built_in">local</span>/redis/bin/</span><br><span class="line">vim redis.conf</span><br><span class="line">daemonize yes</span><br><span class="line">requirepass xxx</span><br><span class="line">redis-server /usr/<span class="built_in">local</span>/redis/etc/redis.conf</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>mysql安装</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">wget https://cdn.mysql.com/archives/mysql-5.7/mysql-5.7.24-linux-glibc2.12-x86_64.tar.gz</span><br><span class="line"><span class="comment">##卸载已安装mysql</span></span><br><span class="line">rpm -qa | grep mysql</span><br><span class="line">rpm -e --nodeps mysql-libs-5.1.73-5.el6_6.x86_64</span><br><span class="line">whereis mysql</span><br><span class="line">rm -rf /usr/bin/mysql /usr/include/mysql /data/mysql /data/mysql/mysql </span><br><span class="line"><span class="comment">##安装mysql</span></span><br><span class="line">groupadd mysql</span><br><span class="line">useradd -r -g mysql mysql</span><br><span class="line">tar xzvf mysql-5.7.24-linux-glibc2.12-x86_64.tar.gz</span><br><span class="line">mv mysql-5.7.24-linux-glibc2.12-x86_64 /usr/<span class="built_in">local</span>/mysql</span><br><span class="line">mkdir /usr/<span class="built_in">local</span>/mysql/data</span><br><span class="line">chown -R mysql:mysql /usr/<span class="built_in">local</span>/mysql</span><br><span class="line">chmod -R 755 /usr/<span class="built_in">local</span>/mysql</span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/mysql/bin</span><br><span class="line">./mysqld --initialize --user=mysql --datadir=/usr/<span class="built_in">local</span>/mysql/data --basedir=/usr/<span class="built_in">local</span>/mysql</span><br><span class="line">vi /etc/my.cnf</span><br><span class="line">[mysqld]</span><br><span class="line">datadir=/usr/<span class="built_in">local</span>/mysql/data</span><br><span class="line">port=3306</span><br><span class="line">sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES</span><br><span class="line">symbolic-links=0</span><br><span class="line">max_connections=600</span><br><span class="line">innodb_file_per_table=1</span><br><span class="line">lower_case_table_names=1</span><br><span class="line">character_set_server=utf8</span><br><span class="line">/usr/<span class="built_in">local</span>/mysql/support-files/mysql.server start</span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/mysql/support-files/mysql.server /etc/init.d/mysql </span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/mysql/bin/mysql /usr/bin/mysql</span><br><span class="line">service mysql restart</span><br><span class="line">mysql -u root -p</span><br><span class="line">Enter password:</span><br><span class="line">mysql&gt;<span class="built_in">set</span> password <span class="keyword">for</span> root@localhost = password(<span class="string">&#x27;xxxx&#x27;</span>);</span><br><span class="line">mysql&gt;use mysql;</span><br><span class="line">msyql&gt;update user <span class="built_in">set</span> user.Host=<span class="string">&#x27;%&#x27;</span> <span class="built_in">where</span> user.User=<span class="string">&#x27;root&#x27;</span>;</span><br><span class="line">mysql&gt;flush privileges;</span><br><span class="line">mysql&gt;<span class="built_in">source</span> /home/xxx.sql</span><br><span class="line">cp /usr/<span class="built_in">local</span>/mysql/support-files/mysql.server /etc/init.d/mysqld</span><br><span class="line">chmod +x /etc/init.d/mysqld</span><br><span class="line">chkconfig --add mysqld</span><br><span class="line">chkconfig --list</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>JDK1.8安装</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">wget https://yy2.gxkjbg.com/201704/tools/jdk-linux-x64.tar.gz</span><br><span class="line">tar -zxvf jdk-linux-x64.tar.gz</span><br><span class="line">mv /home/jdk1.8.0_131 /usr/<span class="built_in">local</span></span><br><span class="line">vi .bash_profile</span><br><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/<span class="built_in">local</span>/jdk1.8.0_131</span><br><span class="line"><span class="built_in">export</span> CLASSPATH=$:CLASSPATH:<span class="variable">$JAVA_HOME</span>/lib</span><br><span class="line">PATH=<span class="variable">$PATH</span>:<span class="variable">$HOME</span>/bin:<span class="variable">$JAVA_HOME</span>/bin</span><br><span class="line"><span class="built_in">export</span> PATH</span><br><span class="line"><span class="built_in">source</span> .bash_profile</span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/jdk1.8.0_131/bin/java /usr/bin/java</span><br></pre></td></tr></table></figure>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2020/05/09/dorado7/" style="float: left;">
+        ← Dorado7
+    </a>
+    
+    
+    <a class="pull-right" href="/2019/02/15/truncate%E6%81%A2%E5%A4%8D/">
+        TRUNCATE恢复 →
+    </a>
+    
+</nav>
 
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>每一个不曾起舞的日子都是对生命的辜负。</p>
-        </div>
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
     </div>
 </section>
+
+
       
 <!-- ============================ Footer =========================== -->
 
