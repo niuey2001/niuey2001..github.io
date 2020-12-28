@@ -82,7 +82,7 @@
 				  	
 				    <li><a href="/categories/工作学习/" class="animsition-link">工作学习<small>(15)</small></a></li>
 				    
-				    <li><a href="/categories/读书/" class="animsition-link">读书<small>(1)</small></a></li>
+				    <li><a href="/categories/读书/" class="animsition-link">读书<small>(2)</small></a></li>
 				    
 				</ul>
         	</li>
@@ -289,6 +289,7 @@
 <li>jmap -dump:live,format=b,file=a.log pid<br>JVM会将整个heap的信息dump写入到一个文件，heap如果比较大的话，就会导致这个过程比较耗时，并且执行的过程中为了保证dump的信息是可靠的，所以会暂停应用。</li>
 </ul>
 </blockquote>
+<h4 id="cache内存回收"><a href="#cache内存回收" class="headerlink" title="cache内存回收"></a>cache内存回收</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> 1 &gt;/proc/sys/vm/drop_caches</span><br><span class="line"><span class="built_in">echo</span> 2 &gt;/proc/sys/vm/drop_caches</span><br><span class="line"><span class="built_in">echo</span> 3 &gt;/proc/sys/vm/drop_caches</span><br></pre></td></tr></table></figure>
 <p><a href="/img/jvm%E5%86%85%E5%AD%98%E7%9B%91%E6%8E%A7.txt">java实现jvm监控</a></p>
 
             <div class="clearfix"></div>
