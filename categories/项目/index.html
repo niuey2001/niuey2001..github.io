@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Cookie实现SSO | WENHUI`S BLOG</title>
+  <title>Category: 项目 | WENHUI`S BLOG</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -59,7 +59,7 @@
 </head>
 
 <!--
-<body class="post-template">
+<body class="home-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -165,113 +165,69 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 
-      
-<section id="intro">
-    <div class="container">
-        <div class="row col-md-offset-2">
-            <div class="col-md-8">
-    			<span class="post-meta">
-      <time datetime="2018-09-07T09:50:35.000Z" itemprop="datePublished">
-          2018-09-07
-      </time>
-    
-    
-    | 
-    <a href='/tags/sso/'>sso</a>
-    
-    
-</span>
-                <h1>Cookie实现SSO</h1>
+      <!-- ============================ Hero Image =========================== -->
+
+<section id="hero" class="scrollme">
+    <div class="container-fluid element-img" style="background: url(https://cdn.jsdelivr.net/gh/niuey2001/rs@5.0/img/1.jpeg) no-repeat center center fixed;background-size: cover">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
+                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
+                    <div>
+                        
+                        <h2></h2>
+                        <p></p>
+                        
+                        <h2></h2>
+                        <p></p>
+                        
+
+                    </div>
+                </div>
             </div>
+            <!-- // .col-md-12 -->
         </div>
-        <div class="col-md-8 col-md-offset-2">
-      		<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><hr>
-<p>两个拥有相同顶级域名的网站:<br>a:  <a target="_blank" rel="noopener" href="http://www.lb.xxxx/">www.lb.xxxx</a> （主网站）<br>b: game.lb.xxxx   (需要共享登陆信息网站)<br>需要实现：登陆a网站，跳转b网站的时候，免登陆。同时保留b网站原有的登陆入口。<br>大致思路：</p>
-<blockquote>
-<p>1，设置加密字段，存储用户主键、签名信息。<br>2，修改a网站登陆逻辑，增加登陆成功，回写加密字段到cookie。<br>3，修改b网站登陆逻辑，增加获取cookie自动登陆功能。</p>
-</blockquote>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><hr>
-<h5 id="设置加密字段"><a href="#设置加密字段" class="headerlink" title="设置加密字段"></a>设置加密字段</h5><p>加密字段主要有3部分：</p>
-<blockquote>
-<p>1，当前系统时间秒数，用于判断是否过期。<br>2，用户主键，用来获取用户信息。<br>3，签名信息，md5加密（当前时间+用户主键+密钥）生成签名信息，用于判断加密字段的合法性。</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ticket = System.currentTimeMillis() / 1000 + userid + EncryptUtil.md5encode(System.currentTimeMillis() +userid+salt)</span><br></pre></td></tr></table></figure>
-
-<h5 id="修改登陆逻辑"><a href="#修改登陆逻辑" class="headerlink" title="修改登陆逻辑"></a>修改登陆逻辑</h5><p>生成ticket字段</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">private String _login(HttpServletRequest request, User user) &#123;</span><br><span class="line">	SessionUtil.saveCurentUserId(request.getSession(), user.getId());</span><br><span class="line"></span><br><span class="line">	User o = new User();</span><br><span class="line">	o.setId(user.getId());</span><br><span class="line">	String tk = EncryptUtil.makeAuthTicket(user.getId());</span><br><span class="line">	o.setTicket(tk);</span><br><span class="line">	o.setLastoptat(new Date());</span><br><span class="line">	o.setLastoptip(HttpUtil.getClientAddr(request));</span><br><span class="line">	// 存取用户浏览器信息</span><br><span class="line">	o.setUserbrowser(BrowserUtil.getBrowserName(request</span><br><span class="line">			.getHeader(<span class="string">&quot;User-Agent&quot;</span>)));</span><br><span class="line">	objectDao.updateByPrimaryKeySelective(o);</span><br><span class="line">	SessionUtil.saveCurentRoleId(request.getSession(), user.getRoleid());</span><br><span class="line">	SessionUtil.saveAuthTicket(request.getSession(), tk);</span><br><span class="line">	<span class="keyword">if</span> (StringUtil.isNotBlank(user.getScope()))</span><br><span class="line">		SessionUtil.saveCurentShopId(request.getSession(),</span><br><span class="line">				Long.valueOf(user.getScope()));</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		SessionUtil.saveCurentShopId(request.getSession(), Long.valueOf(0));</span><br><span class="line">	<span class="built_in">return</span> tk;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> public static final String makeAuthTicket(long userId)&#123;</span><br><span class="line">	int expireAt = (int) Math.ceil(System.currentTimeMillis()/1000)+3600*4;</span><br><span class="line">	String sign = md5encode(<span class="string">&quot;&quot;</span>+expireAt+<span class="string">&quot;&quot;</span>+userId+secret);</span><br><span class="line">	<span class="built_in">return</span> expireAt +<span class="string">&quot;-&quot;</span> + userId +<span class="string">&quot;-&quot;</span>+ sign;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>回写ticket到cookie</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">@ResponseBody</span><br><span class="line">@RequestMapping(&#123; <span class="string">&quot;/userlogin&quot;</span> &#125;)</span><br><span class="line">public Object userlogin(String mobile, String password,</span><br><span class="line">		HttpServletRequest request, HttpServletResponse resp)</span><br><span class="line">		throws Exception &#123;</span><br><span class="line">	User user = null;</span><br><span class="line"></span><br><span class="line">	@SuppressWarnings(&#123; <span class="string">&quot;unused&quot;</span>, <span class="string">&quot;unchecked&quot;</span> &#125;)</span><br><span class="line">	Map&lt;String, Object&gt; map = this.userService.loginWithPwd(mobile,</span><br><span class="line">			password, request);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (Integer.parseInt(map.get(<span class="string">&quot;code&quot;</span>).toString()) == 1) &#123;</span><br><span class="line">		user = (User) map.get(<span class="string">&quot;msg&quot;</span>);</span><br><span class="line"></span><br><span class="line">		user.setPasswd(null);</span><br><span class="line">		loger.info(<span class="string">&quot;登陆成功获取TICKET:&quot;</span> + user.getTicket());</span><br><span class="line"></span><br><span class="line">		Cookie compCookie = new Cookie(<span class="string">&quot;ticket&quot;</span>, user.getTicket());</span><br><span class="line">		compCookie.setMaxAge(60 * 60 * 24);</span><br><span class="line">		compCookie.setPath(<span class="string">&quot;/&quot;</span>);</span><br><span class="line">		compCookie.setDomain(<span class="string">&quot;lb.world&quot;</span>);//为了保证b网站可以获取cookie,必须设置成顶级域名。</span><br><span class="line"></span><br><span class="line">		resp.addCookie(compCookie);</span><br><span class="line"></span><br><span class="line">		<span class="built_in">return</span> new ResultOk(user);</span><br><span class="line"></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="built_in">return</span> new ResultFail(map.get(<span class="string">&quot;msg&quot;</span>).toString());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="修改b网站ticket登陆逻辑"><a href="#修改b网站ticket登陆逻辑" class="headerlink" title="修改b网站ticket登陆逻辑"></a>修改b网站ticket登陆逻辑</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(value = &#123; <span class="string">&quot;/public/index&quot;</span>, <span class="string">&quot;/&quot;</span> &#125;)</span><br><span class="line">public ModelAndView showIndex0(HttpServletResponse resp,</span><br><span class="line">		HttpSession session, HttpServletRequest request) throws IOException &#123;</span><br><span class="line">	<span class="keyword">if</span> (session.getAttribute(<span class="string">&quot;KEY_CURENT_USERID&quot;</span>) == null) &#123;</span><br><span class="line">		Cookie[] cookies = request.getCookies();</span><br><span class="line">		String ticket = <span class="string">&quot;&quot;</span>;</span><br><span class="line">		<span class="keyword">for</span> (Cookie cookie : cookies) &#123;</span><br><span class="line">			switch (cookie.getName()) &#123;</span><br><span class="line">			<span class="keyword">case</span> <span class="string">&quot;ticket&quot;</span>:</span><br><span class="line">				ticket = cookie.getValue();</span><br><span class="line">				<span class="built_in">break</span>;</span><br><span class="line">			default:</span><br><span class="line">				<span class="built_in">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		loger.debug(<span class="string">&quot;cookie 获取到ticket:&quot;</span> + ticket);</span><br><span class="line">		try &#123;</span><br><span class="line">			userService.loginWithTicket(ticket, request);</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			loger.error(e.getMessage());</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	loger.debug(<span class="string">&quot;免cookie 获取current_userid:&quot;</span></span><br><span class="line">			+ session.getAttribute(<span class="string">&quot;KEY_CURENT_USERID&quot;</span>));</span><br><span class="line"></span><br><span class="line">	ModelAndView mv = new ModelAndView(<span class="string">&quot;redirect:/mh.html&quot;</span>);</span><br><span class="line">	<span class="built_in">return</span> mv;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-            <div class="clearfix"></div>
-            <hr class="nogutter">
-        </div>
-        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
-    
-    <a class="pull-left" href="/2018/09/20/ogg/" style="float: left;">
-        ← ogg 常用命令
-    </a>
-    
-    
-    <a class="pull-right" href="/2018/08/27/vue/">
-        vue →
-    </a>
-    
-</nav>
-
-        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
-  /**
-   * 搜狐畅言
-   */
-
-  /*
-  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
-
-  window.onload = function () {
-    (function () {
-      var appid = 'cytXXXX';
-      var conf = 'prod_xxxxxxxxxxxxxxxxx';
-      var width = window.innerWidth || document.documentElement.clientWidth;
-      var loadJs = function (d, a, id) {
-        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
-        var b = document.createElement("script");
-        b.setAttribute("type", "text/javascript");
-        b.setAttribute("charset", "UTF-8");
-        b.setAttribute("src", d);
-        if (id) {
-          b.setAttribute("id", id);
-        }
-        if (typeof a === "function") {
-          if (window.attachEvent) {
-            b.onreadystatechange = function () {
-              var e = b.readyState;
-              if (e === "loaded" || e === "complete") {
-                b.onreadystatechange = null;
-                a()
-              }
-            }
-          } else {
-            b.onload = a
-          }
-        }
-        c.appendChild(b)
-      };
-
-      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
-        window.changyan.api.config({
-          appid: appid,
-          conf: conf
-        })
-      });
-    })();
-  }
-  */
-
-</script>
-</div>
+        <div class="herofade beige-dk"></div>
     </div>
 </section>
 
+<!-- Height spacing helper -->
+<div class="heightblock"></div>
+<!-- // End height spacing helper -->
 
+<!-- ============================ END Hero Image =========================== -->
+
+
+
+
+<section id="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="row boxes">
+                    
+                    
+                        
+                        
+                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
+                            
+                              <h4 class="title"><a href="/2020/12/21/WPF/">WPF 项目实践</a></h4>
+                            
+                            <p><time datetime="2020-12-21T02:29:31.000Z"><a href="/2020/12/21/WPF/">2020-12-21</a></time></p>
+                        </div>
+                    
+                </div>
+            </div>    
+        </div>
+    </div>
+</section> 
+
+<section id="statement">
+    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
+        <div class="row">
+            <p>每一个不曾起舞的日子都是对生命的辜负。</p>
+        </div>
+    </div>
+</section>
       
 <!-- ============================ Footer =========================== -->
 
