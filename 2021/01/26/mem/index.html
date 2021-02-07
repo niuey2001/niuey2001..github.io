@@ -207,7 +207,7 @@
 &emsp; 定位到调度任务运行的类com.tz.controller.ArchivePro.<init>，反编译相应jar如下所示，代码段大概是要删除并归档产生的Pdf文件，由于高并发下删除文件太慢，导致该代码出现内存泄漏问题。
 <img src=" https://cdn.jsdelivr.net/gh/niuey2001/rs@7.0/img/mem04.png " /></li>
 <li>解决办法<br>去掉该spring调度任务，改用Linux 定时任务删除文件<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">5 0 * * * /home/weblogic/del.sh</span><br><span class="line">find /weblogic/ftp -maxdepth 1 -<span class="built_in">type</span> d -name <span class="string">&#x27;*-*&#x27;</span> -mtime +3 -<span class="built_in">exec</span> rm -rf &#123;&#125; \;</span><br></pre></td></tr></table></figure></li>
-<li>最终效果<br>通过监控weblogic jvm 可以看到内存已经可以自动回收，如下所示：<img src=" https://cdn.jsdelivr.net/gh/niuey2001/rs@7.0/img/mem05.png " /></li>
+<li>最终效果<br>weblogic线程不再堵塞，通过监控weblogic jvm 可以看到内存已经可以自动回收，如下所示：<img src=" https://cdn.jsdelivr.net/gh/niuey2001/rs@7.0/img/mem05.png " /></li>
 </ul>
 
             <div class="clearfix"></div>
