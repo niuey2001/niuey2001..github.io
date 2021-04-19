@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Archives: 2021 | WENHUI`S BLOG</title>
+  <title>HashBridge | WENHUI`S BLOG</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -59,7 +59,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -165,96 +165,103 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 
-      <!-- ============================ Hero Image =========================== -->
-
-<section id="hero" class="scrollme">
-    <div class="container-fluid element-img" style="background: url(https://cdn.jsdelivr.net/gh/niuey2001/rs@5.0/img/1.jpeg) no-repeat center center fixed;background-size: cover">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
-                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
-                    <div>
-                        
-                        <h2></h2>
-                        <p></p>
-                        
-                        <h2></h2>
-                        <p></p>
-                        
-
-                    </div>
-                </div>
-            </div>
-            <!-- // .col-md-12 -->
-        </div>
-        <div class="herofade beige-dk"></div>
-    </div>
-</section>
-
-<!-- Height spacing helper -->
-<div class="heightblock"></div>
-<!-- // End height spacing helper -->
-
-<!-- ============================ END Hero Image =========================== -->
-
-
-
-
-<section id="services">
+      
+<section id="intro">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row boxes">
-                    
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2021/04/19/hashbridge/">HashBridge</a></h4>
-                            
-                            <p><time datetime="2021-04-19T04:21:20.000Z"><a href="/2021/04/19/hashbridge/">2021-04-19</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2021/01/26/mem/">Memory Leak</a></h4>
-                            
-                            <p><time datetime="2021-01-26T09:56:28.000Z"><a href="/2021/01/26/mem/">2021-01-26</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2021/01/20/CDH/">CDH 5.13 搭建</a></h4>
-                            
-                            <p><time datetime="2021-01-20T08:05:49.000Z"><a href="/2021/01/20/CDH/">2021-01-20</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2021/01/05/Sqlparse/">Sqlparse</a></h4>
-                            
-                            <p><time datetime="2021-01-05T03:11:20.000Z"><a href="/2021/01/05/Sqlparse/">2021-01-05</a></time></p>
-                        </div>
-                    
-                </div>
-            </div>    
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2021-04-19T04:21:20.000Z" itemprop="datePublished">
+          2021-04-19
+      </time>
+    
+    
+    | 
+    <a href='/tags/区块链/'>区块链</a>
+    
+    
+</span>
+                <h1>HashBridge</h1>
+            </div>
         </div>
-    </div>
-</section> 
+        <div class="col-md-8 col-md-offset-2">
+      		<blockquote>
+<p>HashBridge节点搭建过程</p>
+</blockquote>
+<hr>
+<ul>
+<li>go 安装<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">wget https://golang.google.cn/dl/go1.14.9.linux-amd64.tar.gz</span><br><span class="line">tar -xzvf go1.14.9.linux-amd64.tar.gz  -C /usr/<span class="built_in">local</span></span><br><span class="line">mkdir -p /data/gopath</span><br><span class="line">vim /etc/profile</span><br><span class="line"><span class="built_in">export</span> GOROOT=/usr/<span class="built_in">local</span>/go </span><br><span class="line"><span class="built_in">export</span> GOPATH=/data/gopath</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$GOROOT</span>/bin:<span class="variable">$GOPATH</span>/bin</span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br><span class="line">go version</span><br><span class="line">go env</span><br></pre></td></tr></table></figure></li>
+<li>nvm 、nodejs、yarn 安装<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">yum  install -y git</span><br><span class="line">git --version</span><br><span class="line">git <span class="built_in">clone</span> git://github.com/creationix/nvm.git ~/nvm</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;source ~/nvm/nvm.sh&quot;</span> &gt;&gt; ~/.bashrc</span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br><span class="line">nvm --version</span><br><span class="line">nvm list-remote</span><br><span class="line">nvm install 12.18 &amp;&amp; nvm use 12.18</span><br><span class="line">nvm ls</span><br><span class="line">node --version</span><br><span class="line">npm install -g yarn</span><br></pre></td></tr></table></figure></li>
+<li>postgresql安装<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">yum install https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm</span><br><span class="line">sudo yum install -y postgresql11-server</span><br><span class="line">sudo /usr/pgsql-11/bin/postgresql-11-setup initdb</span><br><span class="line">sudo systemctl <span class="built_in">enable</span> postgresql-11</span><br><span class="line">sudo systemctl start postgresql-11</span><br><span class="line">vim /var/lib/pgsql/11/data/postgresql.conf</span><br><span class="line">listen_addresses = <span class="string">&#x27;*&#x27;</span></span><br><span class="line">port = xxxx</span><br><span class="line">vim /var/lib/pgsql/11/data/pg_hba.conf</span><br><span class="line">host    all             all             127.0.0.1/32           md5</span><br><span class="line">systemctl restart postgresql-11</span><br><span class="line">systemctl status postgresql-11</span><br><span class="line">su - postgres</span><br><span class="line">psql -U postgres</span><br><span class="line">ALTER USER postgres WITH PASSWORD <span class="string">&#x27;xxx&#x27;</span>;</span><br><span class="line">CREATE DATABASE xxxx OWNER postgres;</span><br><span class="line">GRANT ALL PRIVILEGES ON DATABASE postgres_t1 to postgres;</span><br></pre></td></tr></table></figure></li>
+<li>hashbridge安装<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">拷贝源码</span><br><span class="line">yarn</span><br><span class="line">make install</span><br><span class="line">hashbridge <span class="built_in">help</span></span><br><span class="line">mkdir -p /hbdata/bridge_deploy</span><br><span class="line">sudo chmod 0755 -R /hbdata/bridge_deploy</span><br><span class="line"><span class="built_in">cd</span> /hbdata/bridge_deploy</span><br><span class="line">vi .password</span><br><span class="line">vi .env</span><br><span class="line">hashbridge node start --password .password</span><br><span class="line">hashbridge admin login</span><br><span class="line">hashbridge keys eth list</span><br></pre></td></tr></table></figure></li>
+</ul>
 
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>每一个不曾起舞的日子都是对生命的辜负。</p>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
         </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    
+    <a class="pull-right" href="/2021/01/26/mem/">
+        Memory Leak →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
     </div>
 </section>
+
+
       
 <!-- ============================ Footer =========================== -->
 
